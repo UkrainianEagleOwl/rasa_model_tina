@@ -13,10 +13,19 @@ intents:
   - mood_unhappy
   - bot_challenge
 
+# entities:
+# - name
+# - phone
 
 responses:
   utter_greet:
   - text: "Hey! How are you?"
+
+  utter_added_contact:
+  - text: "New contact was added in your address book."
+
+  utter_changed_exist_contact:
+  - text: "Contact's details were changed."
 
   utter_cheer_up:
   - text: "Here is something to cheer you up:"
@@ -37,3 +46,27 @@ responses:
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+
+
+slots:
+  name:
+    type: text
+    mappings:
+    - type: from_text
+    influence_conversation: false
+      conditions:
+      - active_loop: add_contact_form
+        requested_slot: name
+  phone:
+    type: text
+    mappings:
+    - type: from_text
+    influence_conversation: false
+      conditions:
+      - active_loop: add_contact_form
+        requested_slot: phone
+forms:
+  add_contact_form:
+    required_slots:
+        - name
+        - phone

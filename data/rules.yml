@@ -16,3 +16,23 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+rules:
+ - rule: activate add contact form
+   steps:
+   - intent: add_new_contact
+   - action: add_contact_form
+   - active_loop: add_contact_form
+
+ - rule: submit form
+   condition:
+   # Condition that form is active.
+   - active_loop: add_contact_form
+   steps:
+   # Form is deactivated
+   - action: add_contact_form
+   - active_loop: null
+   - slot_was_set:
+    - requested_slot: null
+    # The actions we want to run when the form is submitted.
+   - action: utter_added_contact

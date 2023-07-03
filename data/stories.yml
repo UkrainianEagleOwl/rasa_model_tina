@@ -2,6 +2,15 @@ version: "3.1"
 
 stories:
 
+stories:
+ - story: greet and add contact
+   steps:
+   - intent: greet
+   - action: utter_greet
+   - intent: add_new_contact
+   - action: add_contact_form
+   - active_loop: add_contact_form
+
 - story: happy path
   steps:
   - intent: greet
