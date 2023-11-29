@@ -1,2 +1,2 @@
 # rasa_model_tina
-Simplre personal assistent Tina for working with address book
+Simple personal assistent Tina for working with address book. Some experiments with AI models.
